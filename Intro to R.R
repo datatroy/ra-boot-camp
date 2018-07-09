@@ -171,5 +171,5 @@ d2<-Yellow_Tripdata_2017_06[which(Yellow_Tripdata_2017_06$trip_distance<1000),]
 str(d2)
 summary(d2)
 
-# Let's save our data frame for the next module...
+# Let's save our data frame for the next module.
 save(Yellow_Tripdata_2017_06,file="Yellow_Tripdata_2017_06.RData")
