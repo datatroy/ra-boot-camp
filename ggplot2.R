@@ -1,6 +1,9 @@
 # Install and load ggplot2 package
-install.packages("ggplot2")
-library(ggplot2)
+# install.packages("ggplot2")
+# library(ggplot2)
+
+# install.packages('tidyverse')
+library(tidyverse)
 
 data(diamonds)
 summary(diamonds)

@@ -154,7 +154,10 @@ rm(list=ls(all=TRUE))
 cat("\014") 
 #
 ptm <- proc.time()
-Yellow_Tripdata_2017_06 <- read.csv("C:/RTemp/yellow_tripdata_2017-06-ssd-copy.csv", comment.char="#")
+#Yellow_Tripdata_2017_06 <- read.csv("C:/RTemp/yellow_tripdata_2017-06-ssd-copy.csv", comment.char="#")
+Yellow_Tripdata_2017_06 <- read.csv("yellow_tripdata_2017-06.csv", 
+                                    comment.char="#")
+
 proc.time() - ptm
 View(Yellow_Tripdata_2017_06)
 
