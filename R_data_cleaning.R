@@ -13,7 +13,7 @@ Bombing.data <- Bombing.data %>%
   mutate(Latitude = as.numeric(Latitude)) %>%
   mutate(Latitude = round(Latitude,  4)) %>%
   mutate(Longitude = as.numeric(Longitude)) %>%
-  mutate(Longitude = round(Longitude, = 4)) %>% 
+  mutate(Longitude = round(Longitude, 4)) %>% 
   mutate(Blast.Day.Type = as.numeric(Blast.Day.Type == 'Holiday')) %>%
   arrange(S.)
 
