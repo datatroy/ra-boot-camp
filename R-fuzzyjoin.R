@@ -1,10 +1,12 @@
-library(dplyr)
+set.seed(47)
+library(tidyverse)
 # library(ggplot2)
 
 # no matches when they are inner-joined:
 DF_2bjoined <- DF_cleaned
+pk <- read.csv("pk.csv")
 
-DF_joined <- left(DF_cleaned, pk, by = c(City = "city"))
+DF_joined <- left_join(DF_cleaned, pk, by = c(City = "city"))
 
 # install.packages("fuzzyjoin")
 library(fuzzyjoin)
@@ -19,10 +21,10 @@ DF_fuzzyjoined<-DF_fuzzyjoined[which(DF_fuzzyjoined$population>1),]
 str(DF_joined)
 str(DF_fuzzyjoined)
 Compare <- anti_join(DF_fuzzyjoined,DF_joined,by="S.")
-View(select(Compare, S., City, city))
+# View(select(Compare, S., City, city))
 
 Compare <- right_join(DF_joined,DF_fuzzyjoined, by = c(S. = "S."))
 str(Compare)
-View(select(Compare, S., city.x, lat.x, lat.y))
+# View(select(Compare, S., city.x, lat.x, lat.y))
 
      

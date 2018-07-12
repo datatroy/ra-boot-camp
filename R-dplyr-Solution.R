@@ -187,6 +187,7 @@ SampleP <- sample_frac(DF_cleaned, .1)
 # Getting rid of all our intermediate results DFs
 
 rm(list=setdiff(ls(), "DF_cleaned"))
+Bombing.data <- DF_cleaned
 
 # Convert latitude and longitude to numeric with 4 decimal places
 # 
@@ -209,5 +210,14 @@ DF_cleaned <- DF_cleaned %>% arrange(Target.Type,desc(Injured.Max))
 # Using arrange() with lag() to demonstrate lag()
 DF_cleaned <- DF_cleaned %>% mutate("Days Since Last Bombing"=(Date-lag(Date, order_by = Date))/86400)
 
+
+
+Bombing.data <- Bombing.data %>%
+  mutate(Latitude = as.numeric(Latitude)) %>%
+  mutate(Latitude = round(Latitude,  4)) %>%
+  mutate(Longitude = as.numeric(Longitude)) %>%
+  mutate(Longitude = round(Longitude, 4)) %>% 
+  mutate(Blast.Day.Type = as.numeric(Blast.Day.Type == 'Holiday')) %>%
+  arrange(S.)
 
                                     
