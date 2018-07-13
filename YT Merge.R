@@ -1,10 +1,11 @@
-yt_master <- read.csv("C:/Temp/yellow_tripdata_2017-06.csv", comment.char="#")
-yellow_tripdata_2017_07 <- read.csv("C:/Temp/yellow_tripdata_2017-07.csv", comment.char="#")
+yt_master <- read.csv("yellow_tripdata_2017-06.csv", comment.char="#")
+yellow_tripdata_2017_07 <- read.csv("yellow_tripdata_2017-07.csv", comment.char="#")
 yt_master <- rbind(yt_master, yellow_tripdata_2017_07)
 
 # Getting rid of individual monthly files
 
 rm(list=setdiff(ls(), "yt_master"))
+gc()
 
 # Note: "install" will throw warning errors if a package has been previously ignored
 # install.packages("validate")
