@@ -69,7 +69,7 @@ View(DF2)
 # Split the Month and the Day
 DF3 <- DF2 %>% separate(col=Date,into=c("Month", "Day")," ",extra="merge")
 View(DF3)
-
+str(DF3)
 # Replace alpha Month with Month Number
 DF4 <- DF3 %>% mutate(Month=replace(Month,Month=="Jan",1),
                       Month=replace(Month,Month=="Feb",2),
@@ -182,3 +182,23 @@ SampleN <- sample_n(DF_cleaned, 20)
 View(SampleN)
 SampleP <- sample_frac(DF_cleaned, .1)
 View(SampleP)
+
+#Show the latitude and longitude variables up to four decimals
+options(digits=6)
+
+#or DF_cleaned<-DF_cleaned %>% mutate(format(round(Latitude, 4), nsmall = 4),
+#                                  format(round(Longitude, 4), nsmall = 4)) 
+
+#Generate a holiday dummy 
+DF_cleaned_2$Blast.Day.Type <- as.character(DF_cleaned_2$Blast.Day.Type)
+
+DF_cleaned_3<-DF_cleaned_2 %>% mutate(Blast.Day.Type=replace(Blast.Day.Type,Blast.Day.Type=="Holiday",1),
+                                      Blast.Day.Type=replace(Blast.Day.Type,Blast.Day.Type=="Working Day",0),
+                                      Blast.Day.Type=replace(Blast.Day.Type,Blast.Day.Type==" ",0))
+
+#Arrange the data set by date
+DF_cleaned_4 <-DF_cleaned_3 %>% arrange(Date)
+
+#Generate a variable for the elapsed days from last bombings
+DF_cleaned_4<-DF_cleaned_4%>%mutate("days"=(Date-lag(Date,order_by=Date))/864000)
+View(DF_cleaned_4) 
