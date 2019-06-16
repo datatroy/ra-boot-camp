@@ -1,5 +1,5 @@
-install.packages("dplyr")
-library(dplyr)
+install.packages('tidyverse')
+library(tidyverse)
 DF <- read.csv("PakistanSuicideAttacks Ver 11 (30-November-2017).csv")
 View(DF)
 names(DF)
